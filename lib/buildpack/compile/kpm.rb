@@ -22,7 +22,7 @@ module AspNet5Buildpack
 
     def restore(dir, out)
       @shell.env["HOME"] = dir
-      @shell.exec("bash -c 'source #{dir}/.k/kvm/kvm.sh; kvm install 1.0.0-beta3; for i in $(find -iname project.json -print0 | xargs -0 -n1 dirname); do kpm restore; done'", out)
+      @shell.exec("bash -c 'source #{dir}/.k/kvm/kvm.sh; kvm install 1.0.0-beta3; for i in $(find -iname project.json -print0 | xargs -0 -n1 dirname); do kpm restore -s https://www.myget.org/F/aspnetvnext/ ; done'", out)
     end
   end
 end
